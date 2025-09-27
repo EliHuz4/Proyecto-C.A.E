@@ -61,3 +61,9 @@ pipeline : flujo secuencial de procesos en el que la salida de una etapa es la e
 | `tienda` | Texto | Nombre de la tienda de origen |
 | `rating` | float | Puntuación de usuarios si está disponible |
 | `Categoria` | Texto | Categoría principal |
+
+## Integrantes
+
+Anais Diaz
+Cristian Gallardo
+Matías Salas
