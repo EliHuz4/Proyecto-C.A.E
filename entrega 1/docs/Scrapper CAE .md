@@ -40,14 +40,11 @@ El objetico de este proyecto es proveer una plataforma que recopile y analice au
 - POO: Permite modelar entidades clave del sistema como `Producto`, `Tienda`, `nombre`, cada una con atributos (precio, nombre, URL) y métodos (actualizarPrecio(), parsearHTML()). Favorece la escalabilidad, el mantenimiento del código y la encapsulación de la lógica de negocio.
 - Funcional: Ideal para las transformaciones de datos durante el proceso de scraping y analítica (mapeo, filtrado, reducción). Facilita el trabajo con colecciones inmutables y operaciones de pipeline al limpiar y normalizar precios.
 
-pipeline : flujo secuencial de procesos en el que la salida de una etapa es la entrada de la siguiente, con el objetivo de transformar datos o ejecutar tareas de forma repetible y automatizada.
 
 ## Dataset seleccionado
 
-- Tipo : Real
-- Origen : Los datos serán extraídos de retails anclas del país ( Falabella, Paris, Ripley, etc.) a través del scrapper propio.
-- Tamaño estimado: Aproximadamente 1000–2000 registros de productos en la etapa inicial.
-- Licencia : Los datos son de uso público para fines no comerciales y se utilizarán exclusivamente con fines académicos, respetando los Términos de Servicio de cada sitio web y su archivo `robots.txt`. No se redistribuirán de manera comercial.
+- Tipo : Simulado
+- Tamaño estimado: Aproximadamente 4000 registros de productos en la etapa inicial.
 
 ### Diccionario de datos (sujeto a cambios)
 
