@@ -1,21 +1,21 @@
-// Elementos del DOM
-const menuToggle = document.getElementById('menuToggle') as HTMLElement;
-const sidebar = document.getElementById('sidebar') as HTMLElement;
-const overlay = document.getElementById('overlay') as HTMLElement;
+// 1. MENÚ LATERAL
+(() => {
+    const menuToggle = document.getElementById('menuToggle') as HTMLElement | null;
+    const sidebar = document.getElementById('sidebar') as HTMLElement | null;
+    const overlay = document.getElementById('overlay') as HTMLElement | null;
 
-// Función para alternar el menú
-function toggleMenu() {
-    sidebar.classList.toggle('active');
-    overlay.classList.toggle('active');
-}
-
-// Event listeners
-menuToggle.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu);
-
-// Cerrar el menú con la tecla Escape
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && sidebar.classList.contains('active')) {
-        toggleMenu();
+    function toggleMenu() {
+        if (!sidebar || !overlay) return;
+        sidebar.classList.toggle('open');
+        overlay.classList.toggle('show');
     }
-});
+
+    if (menuToggle) {
+        menuToggle.addEventListener('click', toggleMenu);
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', toggleMenu);
+    }
+
+})();
