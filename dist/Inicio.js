@@ -6,8 +6,8 @@ const overlay = document.getElementById('overlay');
 function toggleMenu() {
     if (!sidebar || !overlay)
         return;
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('show');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
 }
 if (menuToggle) {
     menuToggle.addEventListener('click', toggleMenu);
