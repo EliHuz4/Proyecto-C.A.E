@@ -89,14 +89,20 @@ function inicializarBuscador() {
     // ENTER en el input
     inputBusqueda.addEventListener("keydown", (ev) => {
         if (ev.key === "Enter") {
-            buscarProductos(inputBusqueda.value.trim());
+            const query = inputBusqueda.value.trim();
+            if (query) {
+                window.location.href = `./Search.html?q=${encodeURIComponent(query)}`;
+            }
         }
     });
 
     // CLICK en la lupa
     if (iconoBusqueda) {
         iconoBusqueda.addEventListener("click", () => {
-            buscarProductos(inputBusqueda.value.trim());
+            const query = inputBusqueda.value.trim();
+            if (query) {
+                window.location.href = `./Search.html?q=${encodeURIComponent(query)}`;
+            }
         });
     }
 }
