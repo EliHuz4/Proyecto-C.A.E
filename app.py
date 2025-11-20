@@ -48,24 +48,39 @@ def home():
 def get_products():
     df = DATA.copy()
 
-    name = request.args.get("name", "").lower()
-    store = request.args.get("store", "").lower()
-    category = request.args.get("category", "").lower()
+    # "name" lo usaremos como búsqueda general (nombre o categoría)
+    search   = request.args.get("name", "").strip().lower()
+    store    = request.args.get("store", "").strip().lower()
+    category = request.args.get("category", "").strip().lower()
     min_price = request.args.get("min_price")
     max_price = request.args.get("max_price")
 
-    if name:
-        df = df[df["Description"].str.lower().str.contains(name)]
+    # 1) Filtro por búsqueda general (Description O Category)
+    if search:
+        mask = (
+            df["Description"].str.lower().str.contains(search, na=False) |
+            df["Category"].str.lower().str.contains(search, na=False)
+        )
+        df = df[mask]
+
+    # 2) Filtros adicionales (se aplican como AND)
     if store:
-        df = df[df["Store"].str.lower().str.contains(store)]
+        df = df[df["Store"].str.lower().str.contains(store, na=False)]
+
     if category:
-        df = df[df["Category"].str.lower().str.contains(category)]
+        df = df[df["Category"].str.lower().str.contains(category, na=False)]
+
     if min_price:
         df = df[df["UnitPrice"] >= float(min_price)]
+
     if max_price:
         df = df[df["UnitPrice"] <= float(max_price)]
 
-    return jsonify({"ok": True, "total": len(df), "items": df.to_dict(orient="records")})
+    return jsonify({
+        "ok": True,
+        "total": len(df),
+        "items": df.to_dict(orient="records")
+    })
 
 # ---------- ENDPOINT: MEJOR PRECIO POR PRODUCTO ----------
 @app.route("/best_price", methods=["GET"])
